@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main_helper.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tdietz-r <tdietz-r@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: maja <maja@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/07 09:47:43 by tdietz-r          #+#    #+#             */
-/*   Updated: 2025/10/07 09:56:07 by tdietz-r         ###   ########.fr       */
+/*   Updated: 2025/10/07 16:17:11 by maja             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ void	execute_and_clear(char *input, t_shell_ctx *ctx)
 	ctx->token_list = NULL;
 	if (ctx->exit_free)
 	{
-		rl_clear_history();
+		// rl_clear_history();
 		if (ctx->env)
 			free_env_list(ctx->env);
 		exit(ctx->last_exit_code);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   redirections.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tdietz-r <tdietz-r@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: maja <maja@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/09 18:20:19 by majkijew          #+#    #+#             */
-/*   Updated: 2025/10/07 08:33:03 by tdietz-r         ###   ########.fr       */
+/*   Updated: 2025/10/07 16:51:33 by maja             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,10 @@ static int	handle_input_redir(t_file_node *file)
 {
 	int	fd;
 
-	fd = open(file->filename, O_RDONLY);
-	unlink(file->filename);
+    fd = open(file->filename, O_RDONLY);
+    if (fd != -1 && file->filename
+        && ft_strncmp(file->filename, "./heredoc_", 10) == 0)
+        unlink(file->filename);
 	if (fd == -1)
 	{
 		ft_putstr_fd(file->filename, 2);

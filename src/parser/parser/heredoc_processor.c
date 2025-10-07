@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   heredoc_processor.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tdietz-r <tdietz-r@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: maja <maja@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/04 04:04:12 by tdietz-r          #+#    #+#             */
-/*   Updated: 2025/10/07 10:02:04 by tdietz-r         ###   ########.fr       */
+/*   Updated: 2025/10/07 16:51:33 by maja             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,13 +49,13 @@ char	*create_temp_file_interactive(char *delimiter)
 
 	(void)delimiter;
 	counter = 0;
-	while (counter < 1000)
+    while (counter < 1000)
 	{
 		temp_filename = get_temp_filename(counter);
 		if (!temp_filename)
 			return (NULL);
-		fd = open(temp_filename, O_CREAT | O_WRONLY | O_TRUNC, 0644);
-		if (fd != -1)
+        fd = open(temp_filename, O_CREAT | O_EXCL | O_WRONLY, 0600);
+        if (fd != -1)
 		{
 			close(fd);
 			return (temp_filename);
